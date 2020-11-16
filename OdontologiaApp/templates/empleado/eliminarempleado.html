@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row center">
+        <form method="post">
+            {% csrf_token %}
+                <h3>¿Desea eliminar el registro de {{ empleado.rut }}?</h3>
+                
+                <button class="btn btn-danger" type="submit">Sí, eliminar</button>
+                    <a class="btn btn-primary" href="{% url 'lista_empleado' %}">Cancelar</a>
+        </form>
+                
+    </div>
+</div>
+{% endblock %}

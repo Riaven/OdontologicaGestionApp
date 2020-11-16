@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block titulo %} 
+    Lista de empleados
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<div class="row pull-right">
+    <div class="col-md-12 text-md-center">
+           <a class="btn btn-success" href="{% url 'nuevo_empleado' %}">Nuevo paciente</a>
+    </div>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"><b>Rut</b></th>
+        <th scope="col"><b>Nombre</b></th>
+        <th scope="col" style="width: 250px;"><b>Apellido</b></th>
+        <th scope="col"><b>Dirección</b></th>
+        <th scope="col"><b>Teléfono</b></th>
+        <th scope="col"><b>Correo</b></th>
+        <th scope="col"><b>Acciones</b></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if empleados %}
+      {% for empleado in empleados %}
+      <tr>
+        <td>{{ empleado.rut }}</td>
+        <td>{{ empleado.nombre }}</td>
+        <td>{{ empleado.apellido }}</td>
+        <td>{{ empleado.direccion }}</td>
+        <td>{{ empleado.telefono }}</td>
+        <td>{{ empleado.correo }}</td>
+        <td>
+          <a class="btn btn-primary" href="{% url 'modificar_empleado' empleado.rut %}">Editar</a>
+          <a class="btn btn-danger" href="{% url 'elimina_empleado' empleado.rut %}">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <h1>No existen registros de pacientes, vuelva  intentar más tarde</h1>
+      {% endif %}
+    </tbody>
+  </table>
+{% endblock %}
+
