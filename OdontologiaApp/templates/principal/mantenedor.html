@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Clientes</h4>
+      </div>
+      <div class="card-body">
+        
+        <ul class="list-unstyled mt-3 mb-4">
+            <li>Mantenedor</li>
+            <li>Clientes</li>
+        </ul>
+        <a class="btn btn-lg btn-block btn-primary" >Entrar</a>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Proveedores</h4>
+      </div>
+      <div class="card-body">
+        
+        <ul class="list-unstyled mt-3 mb-4">
+            <li>Mantenedor Proveedores</li>
+            
+        </ul>
+        <a class="btn btn-lg btn-block btn-primary" href = "{% url 'lista_proveedor' %}">Entrar</a>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Empleados</h4>
+      </div>
+      <div class="card-body">
+       
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Mantenedor Empleados</li>
+                   
+        </ul>
+        <a class="btn btn-lg btn-block btn-primary" href = "{% url 'lista_empleado' %}">Entrar</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

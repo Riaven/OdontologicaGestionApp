@@ -8,10 +8,10 @@
     <div class="row center">
         <form method="post">
             {% csrf_token %}
-                <h3>¿Desea eliminar el registro de {{empleado.nombre}} con rut {{ empleado.rut }}?</h3>
+                <h3>¿Desea eliminar el registro de {{proveedor.nombre}} con código {{ proveedor.id_proveedor }}?</h3>
                 
                 <button class="btn btn-danger" type="submit">Sí, eliminar</button>
-                    <a class="btn btn-primary" href="{% url 'lista_empleado' %}">Cancelar</a>
+                    <a class="btn btn-primary" href="{% url 'lista_proveedor' %}">Cancelar</a>
         </form>
                 
     </div>

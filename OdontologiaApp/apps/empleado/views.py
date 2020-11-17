@@ -26,12 +26,12 @@ def eliminarEmpleado(request, rut):
 def modificarEmpleado(request, rut):
     empleado = Empleado.objects.get(rut = rut)
     if request.method == 'GET':
-         form = EmpleadoForm(instance=empleado)
+        form = EmpleadoForm(instance=empleado)
     else:
         form = EmpleadoForm(request.POST, instance=empleado)
         if form.is_valid():
             form.save()
-            return redirect('empleados')
+            return redirect('lista_empleado')
     return render(request, 'empleado/nuevoempleado.html', {'form': form})
 
 #listar empleados

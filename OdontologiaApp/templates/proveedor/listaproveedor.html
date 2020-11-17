@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block titulo %} 
+    Lista de proveedores
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<div class="row pull-right">
+    <div class="col-md-12 text-md-center">
+           <a class="btn btn-success" href="{% url 'nuevo_proveedor' %}">Nuevo proveedor</a>
+    </div>
+</div>
+{% if proveedores %}
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"><b>Id proveedor</b></th>
+        <th scope="col"><b>Nombre</b></th>
+        <th scope="col" style="width: 250px;"><b>Teléfono</b></th>
+        <th scope="col"><b>Dirección</b></th>
+        <th scope="col"><b>Rubro</b></th>
+        <th scope="col"><b>Acciones</b></th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      {% for proveedor in proveedores %}
+      <tr>
+        <td>{{ proveedor.id_proveedor }}</td>
+        <td>{{ proveedor.nombre }}</td>
+        <td>{{ proveedor.telefono }}</td>
+        <td>{{ proveedor.direccion }}</td>
+        <td>{{ proveedor.rubro }}</td>
+        <td>
+          <a class="btn btn-primary" href="{% url 'modificar_proveedor' proveedor.id_proveedor %}">Editar</a>
+          <a class="btn btn-danger" href="{% url 'elimina_proveedor' proveedor.id_proveedor %}">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <h1>No existen registros de proveedores, vuelva  intentar más tarde</h1>
+      {% endif %}
+    </tbody>
+  </table>
+{% endblock %}
+

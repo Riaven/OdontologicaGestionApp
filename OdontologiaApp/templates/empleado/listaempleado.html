@@ -11,24 +11,24 @@
 {% csrf_token %}
 <div class="row pull-right">
     <div class="col-md-12 text-md-center">
-           <a class="btn btn-success" href="{% url 'nuevo_empleado' %}">Nuevo paciente</a>
+           <a class="btn btn-success" href="{% url 'nuevo_empleado' %}">Nuevo empleado</a>
     </div>
 </div>
-
+{% if empleados %}
 <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col"><b>Rut</b></th>
+        <th scope="col" style="width: 130px;"><b>Rut</b></th>
         <th scope="col"><b>Nombre</b></th>
-        <th scope="col" style="width: 250px;"><b>Apellido</b></th>
+        <th scope="col" style="width: 150px;"><b>Apellido</b></th>
         <th scope="col"><b>Dirección</b></th>
         <th scope="col"><b>Teléfono</b></th>
         <th scope="col"><b>Correo</b></th>
-        <th scope="col"><b>Acciones</b></th>
+        <th scope="col" style="width: 250px;" ><b>Acciones</b></th>
       </tr>
     </thead>
     <tbody>
-      {% if empleados %}
+      
       {% for empleado in empleados %}
       <tr>
         <td>{{ empleado.rut }}</td>
@@ -44,7 +44,7 @@
       </tr>
       {% endfor %}
       {% else %}
-      <h1>No existen registros de pacientes, vuelva  intentar más tarde</h1>
+      <h1>No existen registros de empleados, vuelva  intentar más tarde</h1>
       {% endif %}
     </tbody>
   </table>
